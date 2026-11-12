@@ -1,0 +1,21 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Pcard from "../components/Pcard.astro";
+
+const url = "https://kea-alt-del.dk/t7/api/products";
+const data = await fetch(url).then((res) => res.json());
+---
+<Layout title="Produkter">
+  <h1>Produkter</h1>
+  <section>
+    {data.map((product) => <Pcard {product} />)}
+  </section>
+</Layout>
+
+<style>
+  section {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+  }
+</style>
